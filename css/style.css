@@ -1,0 +1,161 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.offline {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.debug-info {
+    display: none;
+}
+
+body.debug-mode .debug-info {
+    display: block;
+}
+
+.mdl-dialog {
+    border: none;
+    box-shadow: 0 9px 46px 1px rgba(0,0,0,.14), 0 11px 15px -7px rgba(0,0,0,.12), 0 24px 38px 3px rgba(0,0,0,.2);
+    width: 80%;
+    max-width: 800px;
+    padding: 1em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    pointer-events: none;
+    z-index: 99999;
+    background-color: white; /* Add a background color to obscure content behind */
+}
+
+.mdl-dialog.is-visible {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mdl-dialog__content ul {
+    list-style: none;
+    padding-left: 1em;
+}
+
+.mdl-dialog__content code {
+    background-color: #eee;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* New styles for API Info Overlay */
+#api-info-overlay .mdl-dialog__content {
+    padding-top: 0;
+}
+
+#api-info-overlay h4 {
+    margin-top: 0;
+    color: #3F51B5; /* Indigo */
+}
+
+#api-info-overlay h5 {
+    margin-bottom: 5px;
+    color: #673AB7; /* Deep Purple */
+}
+
+.mdl-select-wrapper {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.mdl-select-wrapper label {
+    font-size: 12px;
+    color: rgba(0,0,0,.54);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.mdl-select-wrapper select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 2px;
+    background-color: #f5f5f5;
+    font-size: 16px;
+    -webkit-appearance: none; /* Remove default browser styling */
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-6.5%200-12.3%203.2-16.1%208.1-3.8%204.9-4.5%2011.5-1.7%2017.4l128.4%20129.1c1.9%201.9%204.4%202.9%207.1%202.9s5.2-1%207.1-2.9l128.4-129.1c2.8-5.9%202.1-12.5-1.7-17.4z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+}
+
+.mdl-select-wrapper select:focus {
+    outline: none;
+    border-color: #3F51B5;
+    box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+}
+
+.api-section {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.api-link-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.api-link-item code {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow-x: auto;
+    padding-right: 10px;
+}
+
+.api-link-item .copy-button {
+    flex-shrink: 0;
+    margin-left: 10px;
+    color: #3F51B5;
+}
+
+.api-link-item .copy-button i {
+    font-size: 18px;
+}
+
+.api-link-item .copy-button:active i,
+.api-link-item .copy-button:focus i {
+    color: #FF4081; /* Pink A200 */
+}
+
+/* Collapsible content styles */
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.collapsible-content.expanded {
+    max-height: 500px; /* Adjust as needed to fit content */
+}
+
+.toggle-details-button {
+    float: right;
+    margin-top: -24px; /* Adjust to position correctly */
+}
+
+.toggle-details-button i {
+    transition: transform 0.3s ease-out;
+}
+
+.toggle-details-button.expanded i {
+    transform: rotate(180deg);
+    left: 5px;
+    top: 5px;
+}

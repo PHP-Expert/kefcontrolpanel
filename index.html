@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEF Control Panel</title>
+    <link rel="stylesheet" href="lib/mdl/roboto.css">
+    <link rel="stylesheet" href="lib/mdl/material-icons.css">
+    <link rel="stylesheet" href="lib/mdl/material.indigo-pink.min.css">
+    <script defer src="lib/mdl/material.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">KEF Control Panel</span>
+                <div class="mdl-layout-spacer"></div>
+                <button id="group-power-off" class="mdl-button mdl-js-button mdl-button--icon" title="Turn all off">
+                    <i class="material-icons">power_settings_new</i>
+                </button>
+                <button id="group-mute-toggle" class="mdl-button mdl-js-button mdl-button--icon" title="Mute/Unmute all">
+                    <i class="material-icons">volume_up</i>
+                </button>
+                <button id="api-info-button" class="mdl-button mdl-js-button mdl-button--icon" title="Show API Info">
+                    <i class="material-icons">info</i>
+                </button>
+                <button id="manual-refresh-button" class="mdl-button mdl-js-button mdl-button--icon" title="Refresh Now">
+                    <i class="material-icons">refresh</i>
+                </button>
+                <button id="toggle-auto-refresh-button" class="mdl-button mdl-js-button mdl-button--icon" title="Pause Auto Refresh">
+                    <i class="material-icons">pause</i>
+                </button>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="#">Dashboard</a>
+                    <a class="mdl-navigation__link" href="#settings">Settings</a>
+                </nav>
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="debug-toggle">
+                    <input type="checkbox" id="debug-toggle" class="mdl-switch__input">
+                    <span class="mdl-switch__label">Debug</span>
+                </label>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- Dashboard will be rendered here -->
+                <div id="dashboard-view"></div>
+
+                <div id="settings-view" style="display: none;">
+                    <h2>Settings</h2>
+                    <div id="speaker-list-settings"></div>
+                    <form id="add-speaker-form">
+                        <h3>Add Speaker</h3>
+                        <p>Supported models: LS50WII, LSX II, LS60</p>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="speaker-name">
+                            <label class="mdl-textfield__label" for="speaker-name">Name</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="speaker-ip">
+                            <label class="mdl-textfield__label" for="speaker-ip">IP Address</label>
+                        </div>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+                            Add
+                        </button>
+                    </form>
+
+                    <h3>Application Settings</h3>
+                    <form id="app-settings-form">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="app-base-url">
+                            <label class="mdl-textfield__label" for="app-base-url">Application Base URL (e.g., http://your-domain.com)</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="app-base-path">
+                            <label class="mdl-textfield__label" for="app-base-path">Application Base Path (e.g., /kef/)</label>
+                        </div>
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="debug-settings-toggle">
+                            <input type="checkbox" id="debug-settings-toggle" class="mdl-switch__input">
+                            <span class="mdl-switch__label">Enable Debug Mode (logs to debug.log)</span>
+                        </label>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+                            Save Settings
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="api-info-overlay" class="mdl-dialog">
+        <h4 class="mdl-dialog__title">API Information (GET Requests)</h4>
+        <div class="mdl-dialog__content">
+            <p>Use these URLs to control your speakers from external applications via GET requests:</p>
+            <div id="api-links-container"></div>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button close">Close</button>
+        </div>
+    </div>
+
+    <script src="lib/sortablejs/Sortable.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
