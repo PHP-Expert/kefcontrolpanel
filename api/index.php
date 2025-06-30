@@ -27,7 +27,7 @@ if (file_exists($config_file)) {
  * Configure PHP error reporting based on debug mode.
  */
 if ($debug_enabled) {
-    ini_set('error_log', 'debug.log');
+    ini_set('error_log', '../data/debug.log');
     ini_set('display_errors', '1');
     error_reporting(E_ALL);
 } else {
@@ -56,7 +56,16 @@ if ($method === 'OPTIONS') {
  * Parse the request path.
  * @var array $request An array containing the path segments.
  */
-$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+$request_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$script_name = dirname($_SERVER['SCRIPT_NAME']);
+$base_path = str_replace('\\', '/', $script_name);
+
+// Remove the base path from the request URI
+if (strpos($request_uri, $base_path) === 0) {
+    $request_uri = substr($request_uri, strlen($base_path));
+}
+
+$request = explode('/', trim($request_uri,'/'));
 
 /**
  * Route requests based on the first path segment.
@@ -82,7 +91,7 @@ if ($request[0] == 'test') {
     $speaker_id = $request[1];
 
     /** @var array $speakers Loaded speaker configurations. */
-    $speakers = file_exists('speakers.json') ? json_decode(file_get_contents('speakers.json'), true) : [];
+    $speakers = file_exists('../data/speakers.json') ? json_decode(file_get_contents('../data/speakers.json'), true) : [];
 
     /** @var string|null $ip The IP address of the target speaker. */
     $ip = null;

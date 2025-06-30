@@ -41,6 +41,8 @@ The web interface provides a user-friendly way to control your KEF speakers.
 
 ## How to Run the Application
 
+### Using PHP Development Server
+
 1.  **Prerequisites:** Ensure you have PHP installed.
 2.  **Navigate to Project Root:** Open your terminal and navigate to the project's root directory (`/Users/marcus/Projects/kef`).
 3.  **Start PHP Development Server:** Run the following command:
@@ -49,6 +51,36 @@ The web interface provides a user-friendly way to control your KEF speakers.
     ```
     (You can change `localhost:8000` to your desired host and port.)
 4.  **Access in Browser:** Open your web browser and go to `http://localhost:8000` (or your configured host and port).
+
+### Using Docker Compose (V1 - Legacy)
+
+1.  **Prerequisites:** Ensure you have Docker and Docker Compose (V1) installed.
+2.  **Navigate to Project Root:** Open your terminal and navigate to the project's root directory (`/Users/marcus/Projects/kef`).
+3.  **Build and Run with Docker Compose:** Execute the following command:
+    ```bash
+    docker-compose up --build -d
+    ```
+    This command builds the Docker image and starts the container in the background. The `config.json`, `debug.log`, and `speakers.json` files will be stored locally in the `./data/` directory of your project, thanks to Docker volumes.
+4.  **Access in Browser:** Open your web browser and go to `http://localhost:8000`.
+5.  **Stop the Application:** To stop the Docker containers, run:
+    ```bash
+    docker-compose down
+    ```
+
+### Using Docker Compose (V2 - Plugin)
+
+1.  **Prerequisites:** Ensure you have Docker and Docker Compose (V2) plugin installed.
+2.  **Navigate to Project Root:** Open your terminal and navigate to the project's root directory (`/Users/marcus/Projects/kef`).
+3.  **Build and Run with Docker Compose:** Execute the following command:
+    ```bash
+    docker compose up --build -d
+    ```
+    This command builds the Docker image and starts the container in the background. The `config.json`, `debug.log`, and `speakers.json` files will be stored locally in the `./data/` directory of your project, thanks to Docker volumes.
+4.  **Access in Browser:** Open your web browser and go to `http://localhost:8000`.
+5.  **Stop the Application:** To stop the Docker containers, run:
+    ```bash
+    docker compose down
+    ```
 
 ## API Endpoints Overview
 

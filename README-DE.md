@@ -41,6 +41,8 @@ Die Weboberfläche bietet eine benutzerfreundliche Möglichkeit, Ihre KEF-Lautsp
 
 ## So führen Sie die Anwendung aus
 
+### Mit dem PHP-Entwicklungsserver
+
 1.  **Voraussetzungen:** Stellen Sie sicher, dass PHP installiert ist.
 2.  **Zum Projektstammverzeichnis navigieren:** Öffnen Sie Ihr Terminal und navigieren Sie zum Stammverzeichnis des Projekts (`/Users/marcus/Projects/kef`).
 3.  **PHP-Entwicklungsserver starten:** Führen Sie den folgenden Befehl aus:
@@ -49,6 +51,36 @@ Die Weboberfläche bietet eine benutzerfreundliche Möglichkeit, Ihre KEF-Lautsp
     ```
     (Sie können `localhost:8000` in Ihren gewünschten Host und Port ändern.)
 4.  **Im Browser aufrufen:** Öffnen Sie Ihren Webbrowser und gehen Sie zu `http://localhost:8000` (oder Ihrem konfigurierten Host und Port).
+
+### Mit Docker Compose (V1 - Legacy)
+
+1.  **Voraussetzungen:** Stellen Sie sicher, dass Docker und Docker Compose (V1) installiert sind.
+2.  **Zum Projektstammverzeichnis navigieren:** Öffnen Sie Ihr Terminal und navigieren Sie zum Stammverzeichnis des Projekts (`/Users/marcus/Projects/kef`).
+3.  **Mit Docker Compose bauen und ausführen:** Führen Sie den folgenden Befehl aus:
+    ```bash
+    docker-compose up --build -d
+    ```
+    Dieser Befehl erstellt das Docker-Image und startet den Container im Hintergrund. Die Dateien `config.json`, `debug.log` und `speakers.json` werden lokal im Verzeichnis `./data/` Ihres Projekts gespeichert, dank Docker-Volumes.
+4.  **Im Browser aufrufen:** Öffnen Sie Ihren Webbrowser und gehen Sie zu `http://localhost:8000`.
+5.  **Anwendung stoppen:** Um die Docker-Container zu stoppen, führen Sie aus:
+    ```bash
+    docker-compose down
+    ```
+
+### Mit Docker Compose (V2 - Plugin)
+
+1.  **Voraussetzungen:** Stellen Sie sicher, dass Docker und Docker Compose (V2) Plugin installiert sind.
+2.  **Zum Projektstammverzeichnis navigieren:** Öffnen Sie Ihr Terminal und navigieren Sie zum Stammverzeichnis des Projekts (`/Users/marcus/Projects/kef`).
+3.  **Mit Docker Compose bauen und ausführen:** Führen Sie den folgenden Befehl aus:
+    ```bash
+    docker compose up --build -d
+    ```
+    Dieser Befehl erstellt das Docker-Image und startet den Container im Hintergrund. Die Dateien `config.json`, `debug.log` und `speakers.json` werden lokal im Verzeichnis `./data/` Ihres Projekts gespeichert, dank Docker-Volumes.
+4.  **Im Browser aufrufen:** Öffnen Sie Ihren Webbrowser und gehen Sie zu `http://localhost:8000`.
+5.  **Anwendung stoppen:** Um die Docker-Container zu stoppen, führen Sie aus:
+    ```bash
+    docker compose down
+    ```
 
 ## API-Endpunkte Übersicht
 

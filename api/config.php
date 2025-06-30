@@ -17,7 +17,7 @@
  * @return void
  */
 function handle_config($method) {
-    $config_file = 'config.json';
+    $config_file = '../data/config.json';
 
     switch ($method) {
         case 'GET':

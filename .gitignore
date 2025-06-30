@@ -1,3 +1,4 @@
-api/config.json
-api/speakers.json
+config.json
+speakers.json
 debug.log
+.idea
